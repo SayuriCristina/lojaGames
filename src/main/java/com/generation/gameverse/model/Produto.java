@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -29,6 +30,11 @@ public class Produto {
 	@NotBlank(message = "A descrição é obrigatório")
 	@Size (min = 5, max = 100, message = "A descrição deve conter no mínimo 2 e no máximo 100 caracteres")
 	private String descricao;
+	
+	@NotNull(message = "O preço é obrigatório")
+	private float preco;
+	
+	private String sinopse;
 	
 	@UpdateTimestamp
 	private LocalDateTime data;
@@ -76,5 +82,22 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+	public float getPreco() {
+		return preco;
+	}
+
+	public void setPreco(float preco) {
+		this.preco = preco;
+	}
+
+	public String getSinopse() {
+		return sinopse;
+	}
+
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
+	}
+	
 
 }
